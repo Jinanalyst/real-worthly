@@ -17,6 +17,8 @@ export interface QuizQuestion {
 
 export interface QuizAnswer {
   questionId: number;
+  /** The unique option id selected — used for highlighting so only one can be active. */
+  optionId: string;
   selectedValue: MoneyPersonality;
 }
 

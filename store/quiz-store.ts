@@ -10,7 +10,7 @@ interface QuizState {
   answers: QuizAnswer[];
   result: QuizResult | null;
   totalQuestions: number;
-  answer: (questionId: number, value: MoneyPersonality) => void;
+  answer: (questionId: number, optionId: string, value: MoneyPersonality) => void;
   next: () => void;
   back: () => void;
   finish: () => QuizResult;
@@ -23,10 +23,13 @@ export const useQuizStore = create<QuizState>((set, get) => ({
   result: null,
   totalQuestions: QUIZ_QUESTIONS.length,
 
-  answer: (questionId, value) =>
+  answer: (questionId, optionId, value) =>
     set((state) => {
+      // Drop any prior answer for this question so a question can hold exactly one.
       const answers = state.answers.filter((a) => a.questionId !== questionId);
-      return { answers: [...answers, { questionId, selectedValue: value }] };
+      return {
+        answers: [...answers, { questionId, optionId, selectedValue: value }],
+      };
     }),
 
   next: () =>
