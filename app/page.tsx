@@ -145,7 +145,7 @@ function PreviewPhone() {
 
 export default function LandingPage() {
   const router = useRouter();
-  const onStart = () => router.push("/quiz");
+  const onStart = () => router.push("/signup");
   const onLogin = () => router.push("/login");
 
   return (
