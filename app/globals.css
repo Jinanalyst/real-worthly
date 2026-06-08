@@ -103,26 +103,101 @@
 }
 
 .w-btn:hover {
-  background: var(--primary-light);
+  filter: brightness(1.03);
 }
 
 .w-btn:active {
   transform: scale(0.98);
 }
 
-/* Worthly light theme (matches the Canva designs) */
+/* Worthly design tokens (from the design bundle's tokens.css) */
 :root {
-  --cream: #f4f2ea;
-  --cream-2: #faf9f4;
-  --ink: #14201b;
-  --ink-soft: #5d6e66;
-  --ink-muted: #8a9a92;
-  --green-900: #0b4338;
-  --green-700: #0d6e5a;
-  --green-600: #12876e;
-  --line: #e7e4d9;
+  /* brand */
+  --emerald: #0f7a63;
+  --emerald-deep: #0d6e5a;
+  --emerald-900: #0a5546;
+  --emerald-ink: #093b31;
+  --teal: #1a9e84;
+  --teal-soft: #e4f2ed;
+
+  /* surfaces */
+  --bg: #f8faf9;
+  --bg-gray: #eff3f1;
+  --card: #ffffff;
+  --ink: #1a1f1d;
+  --muted: #6b7b74;
+  --line: rgba(26, 31, 29, 0.08);
+  --line-2: rgba(26, 31, 29, 0.06);
+
+  /* accents */
+  --gold: #c9a84c;
+  --gold-soft: #f6efd9;
+  --coral: #e05c4b;
+  --coral-soft: #fbe9e6;
+
+  /* type */
+  --serif: var(--font-dm-serif), Georgia, serif;
+  --sans: var(--font-dm-sans), -apple-system, system-ui, sans-serif;
+  --mono: var(--font-jb-mono), ui-monospace, monospace;
+
+  /* shadow */
+  --sh-sm: 0 1px 2px rgba(13, 110, 90, 0.05), 0 2px 6px rgba(13, 110, 90, 0.04);
+  --sh: 0 2px 6px rgba(13, 110, 90, 0.05), 0 10px 28px rgba(13, 110, 90, 0.07);
+  --sh-lg: 0 8px 24px rgba(13, 110, 90, 0.1), 0 24px 60px rgba(13, 110, 90, 0.1);
+  --sh-gold: 0 6px 20px rgba(201, 168, 76, 0.3);
+
+  /* aliases kept for the onboarding / quiz screens */
+  --font-display: var(--font-dm-serif);
+  --cream: var(--bg);
+  --cream-2: #ffffff;
+  --green-700: var(--emerald-deep);
+  --green-600: var(--emerald);
+  --green-900: var(--emerald-ink);
+  --ink-soft: var(--muted);
+  --ink-muted: #95a39c;
+  --accent-gold: var(--gold);
+}
+
+body {
+  font-family: var(--sans);
 }
 
 .font-display {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
+}
+
+/* Subtle film-grain overlay used on hero / dark sections */
+.w-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxNjAnIGhlaWdodD0nMTYwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC44NScgbnVtT2N0YXZlcz0nMicgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnIGZpbHRlcj0ndXJsKCNuKScgb3BhY2l0eT0nMC40Jy8+PC9zdmc+");
+  opacity: 0.035;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+@keyframes w-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.w-anim-up {
+  animation: w-fade-up 0.5s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+.w-card-h {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.w-card-h:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-lg);
+}
+.w-navlink:hover {
+  color: var(--emerald-deep);
 }

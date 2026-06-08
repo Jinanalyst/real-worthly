@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogoMark } from "@/components/worthly/logo";
+import { Wordmark } from "@/components/worthly/logo";
 
 const TRACKER = [
   { title: "Four questions", body: "No wrong answers" },
@@ -30,12 +30,7 @@ export function OnboardingShell({
         }}
       >
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <LogoMark size={28} />
-            <span className="font-display text-xl font-semibold text-white">
-              Worthly
-            </span>
-          </div>
+          <Wordmark light size={28} />
           <Link
             href="/"
             className="text-sm text-white/60 transition-colors hover:text-white"
