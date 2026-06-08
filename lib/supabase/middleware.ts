@@ -33,7 +33,37 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  await supabase.auth.getUser();
+  // IMPORTANT: Do not run code between createServerClient and getUser. A simple
+  // mistake here could make it very hard to debug random logouts.
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const { pathname } = request.nextUrl;
+
+  // Note: route groups like (onboarding)/(auth) are stripped from the URL,
+  // so the real paths are /quiz, /login, /signup — not /onboarding/quiz.
+  const protectedRoutes = ["/dashboard", "/quiz"];
+  const authRoutes = ["/login", "/signup"];
+
+  const isProtectedRoute = protectedRoutes.some((route) =>
+    pathname.startsWith(route)
+  );
+  const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route));
+
+  // No session on a protected route → send to login.
+  if (!user && isProtectedRoute) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/login";
+    return NextResponse.redirect(url);
+  }
+
+  // Already logged in but visiting login/signup → send to dashboard.
+  if (user && isAuthRoute) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/dashboard";
+    return NextResponse.redirect(url);
+  }
 
   return supabaseResponse;
 }
