@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Fraunces } from "next/font/google";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -13,9 +14,17 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+// Editorial display serif used for headlines, matching the Worthly design.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "Worthly",
-  description: "Your money personality, decoded.",
+  title: "Worthly — A money app that starts with how you feel",
+  description:
+    "Discover your money personality and build habits that actually stick. No bank connection, no tracking — just you.",
 };
 
 export default function RootLayout({
@@ -25,7 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
+      >
         {children}
       </body>
     </html>

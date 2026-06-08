@@ -1,8 +1,8 @@
 export type MoneyPersonality =
-  | "guardian"
-  | "achiever"
-  | "explorer"
-  | "connector";
+  | "anxious_saver"
+  | "free_spirit"
+  | "intentional_planner"
+  | "generous_connector";
 
 export interface UserProfile {
   id: string;

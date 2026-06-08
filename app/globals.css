@@ -109,3 +109,20 @@
 .w-btn:active {
   transform: scale(0.98);
 }
+
+/* Worthly light theme (matches the Canva designs) */
+:root {
+  --cream: #f4f2ea;
+  --cream-2: #faf9f4;
+  --ink: #14201b;
+  --ink-soft: #5d6e66;
+  --ink-muted: #8a9a92;
+  --green-900: #0b4338;
+  --green-700: #0d6e5a;
+  --green-600: #12876e;
+  --line: #e7e4d9;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+}
