@@ -1,101 +1,77 @@
-import Image from "next/image";
+import Link from "next/link";
+
+function WorthlyMark() {
+  return (
+    <svg
+      width="72"
+      height="72"
+      viewBox="0 0 1200 1200"
+      role="img"
+      aria-label="Worthly logo"
+      style={{ borderRadius: 20 }}
+    >
+      <rect width="1200" height="1200" fill="var(--primary)" />
+      <g transform="translate(600 600)">
+        <rect x="-150" y="-10" width="60" height="130" rx="22" fill="#ffffff" />
+        <rect x="-58" y="-80" width="60" height="200" rx="22" fill="#ffffff" />
+        <rect x="34" y="-150" width="60" height="270" rx="22" fill="#ffffff" />
+        <path
+          d="M-190 80 Q-10 200 190 -150"
+          fill="none"
+          stroke="var(--accent-gold)"
+          strokeWidth="34"
+          strokeLinecap="round"
+        />
+      </g>
+    </svg>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main
+      style={{ background: "var(--bg)", color: "var(--text-primary)" }}
+      className="flex min-h-screen flex-col items-center justify-center px-6 py-20"
+    >
+      <div className="flex w-full max-w-md flex-col items-center text-center">
+        <WorthlyMark />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <h1 className="mt-8 text-4xl font-bold tracking-tight">Worthly</h1>
+
+        <p
+          style={{ color: "var(--text-secondary)" }}
+          className="mt-3 text-lg leading-relaxed"
+        >
+          Discover your money personality and build habits that actually stick.
+        </p>
+
+        <div className="mt-10 flex w-full flex-col gap-3">
+          <Link href="/quiz" className="w-btn w-full">
+            Take the quiz
+          </Link>
+          <Link
+            href="/login"
+            className="w-btn w-full"
+            style={{
+              background: "var(--surface-2)",
+              color: "var(--text-primary)",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            Log in
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        <p style={{ color: "var(--text-muted)" }} className="mt-8 text-sm">
+          New here?{" "}
+          <Link
+            href="/signup"
+            style={{ color: "var(--accent-gold)" }}
+            className="font-medium hover:underline"
+          >
+            Create an account
+          </Link>
+        </p>
+      </div>
+    </main>
   );
 }
